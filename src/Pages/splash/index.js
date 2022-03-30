@@ -10,7 +10,7 @@ const Splash = ({navigation}) => {
 
   return (
     <View style={styles.wrap}>
-      <Image source={ILLogo} style={{width: 100, height: 100}} />
+      <ILLogo />
       <Text>MY Doctor</Text>
     </View>
   );
