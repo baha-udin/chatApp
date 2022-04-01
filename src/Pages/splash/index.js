@@ -5,7 +5,7 @@ import {ILLogo} from '../../assets/illustration';
 
 const Splash = ({navigation}) => {
   setTimeout(() => {
-    navigation.navigate('GetStarted');
+    navigation.replace('GetStarted');
   }, 1000);
 
   return (
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     letterSpacing: 0.6,
+    color: '#112340',
   },
 });
 

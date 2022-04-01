@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import Colors from './../../../utils/colors';
 import {resHeight, resWidth} from '../../../utils';
 
@@ -18,7 +17,7 @@ export default ButtonNav;
 
 const styles = StyleSheet.create({
   wrapBtn: type => ({
-    paddingVertical: resHeight(10),
+    paddingVertical: resHeight(12),
     justifyContent: 'center',
     backgroundColor: type === 'primary' ? '#0BCAD4' : 'white',
     borderRadius: 10,
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
     outline: 'none',
   }),
   title: type => ({
-    color: type === 'primary' ? 'white' : 'black',
+    color: type === 'primary' ? '#ffff' : '#112340',
     fontSize: resWidth(16),
     fontWeight: '400',
     letterSpacing: 0.6,

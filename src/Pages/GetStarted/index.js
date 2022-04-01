@@ -29,11 +29,14 @@ const GetStarted = ({navigation}) => {
         <View style={styles.wrapButton}>
           <ButtonNav
             title="Get Started"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('Register')}
             type="primary"
           />
           <Gap height={resHeight(8)} />
-          <ButtonNav title="Log in" />
+          <ButtonNav
+            title="Log in"
+            onPress={() => navigation.navigate('Login')}
+          />
         </View>
       </ImageBackground>
     </>
