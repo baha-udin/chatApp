@@ -14,7 +14,7 @@ const mainColors = {
   red1: '#E06379',
 };
 
-export const colors = {
+export const Colors = {
   primary: mainColors.green1,
   secondary: mainColors.dark1,
   tertiary: mainColors.blue1,

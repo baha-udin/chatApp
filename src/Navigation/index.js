@@ -8,9 +8,12 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
       <Stack.Screen component={Home} name="Home" />
+      <Stack.Screen component={GetStarted} name="GetStarted" />
     </Stack.Navigator>
   );
 };

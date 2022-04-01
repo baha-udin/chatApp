@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.wrapPage}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-contentc'} />
+      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
       <Text>Ini halaman Home</Text>
     </SafeAreaView>
   );
