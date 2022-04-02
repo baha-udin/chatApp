@@ -1,18 +1,38 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import {Splash, Home, GetStarted, Login, Register} from '../Pages';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  Splash,
+  GetStarted,
+  Login,
+  Register,
+  Doctors,
+  Hospitals,
+  Messages,
+} from '../Pages';
+import {BottomNavigation} from '../components/molecules';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const MainApp = () => {
+  return (
+    <Tab.Navigator tabBar={props => <BottomNavigation {...props} />}>
+      <Tab.Screen component={Doctors} name="Doctors" />
+      <Tab.Screen component={Messages} name="Messages" />
+      <Tab.Screen component={Hospitals} name="Hospitals" />
+    </Tab.Navigator>
+  );
+};
 
 const Navigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Register"
+      initialRouteName="MainApp"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
-      <Stack.Screen component={Home} name="Home" />
+      <Stack.Screen component={MainApp} name="MainApp" />
       <Stack.Screen component={GetStarted} name="GetStarted" />
       <Stack.Screen component={Login} name="Login" />
       <Stack.Screen component={Register} name="Register" />

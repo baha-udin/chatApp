@@ -21,6 +21,7 @@ export const Colors = {
   white: 'white',
   black: 'black',
   disable: mainColors.grey3,
+  background: 'white',
   text: {
     primary: mainColors.dark1,
     secondary: mainColors.grey1,

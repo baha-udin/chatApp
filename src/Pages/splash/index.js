@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, SafeAreaView, Image, View} from 'react-native';
-import Colors, {resHeight} from '../../utils';
+import {resHeight, resWidth} from '../../utils';
 import {ILLogo} from '../../assets/illustration';
+import {Colors} from './../../utils/colors';
 
 const Splash = ({navigation}) => {
   setTimeout(() => {
@@ -19,7 +20,7 @@ const Splash = ({navigation}) => {
 const styles = StyleSheet.create({
   wrap: {
     flex: 1,
-    backgroundColor: '#F1F3F4',
+    backgroundColor: Colors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     letterSpacing: 0.6,
-    color: '#112340',
+    color: Colors.text.primary,
   },
 });
 

@@ -7,7 +7,7 @@ import {
   ImageBackground,
   StatusBar,
 } from 'react-native';
-import {colors, resHeight, resWidth} from '../../utils';
+import {Colors, resHeight, resWidth} from '../../utils';
 import {ILGetStarted, ILLogo} from '../../assets/illustration';
 import ButtonNav from '../../components/atoms/ButtonNav';
 import Gap from './../../components/atoms/Gap';
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginTop: resHeight(90),
-    color: 'white',
+    color: Colors.white,
     fontSize: 28,
     fontWeight: '600',
     letterSpacing: 0.5,
