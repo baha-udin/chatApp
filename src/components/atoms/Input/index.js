@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {TextInput} from 'react-native-gesture-handler';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {Colors, resWidth, resHeight} from '../../../utils';
 import Gap from '../Gap';
 

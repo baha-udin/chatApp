@@ -1,7 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {resWidth} from '../../../utils';
+import {resWidth, resHeight} from '../../../utils';
 
 const Link = ({title, onPress, align, size, underline}) => {
   return (

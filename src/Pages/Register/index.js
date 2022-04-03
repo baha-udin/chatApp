@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, StatusBar, useColorScheme, Text, View} from 'react-native';
 import {Header} from './../../components/molecules';
-import {Input, Gap, ButtonNav} from './../../components/atoms';
+import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {resHeight, resWidth} from '../../utils';
 
 const Register = ({navigation}) => {
@@ -22,7 +22,15 @@ const Register = ({navigation}) => {
         <ButtonNav
           type="primary"
           title="Register"
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.replace('MainApp', {screen: 'Doctors'})}
+        />
+        <Gap height={resHeight(30)} />
+        <Link
+          title="Do you have an Account? Login here"
+          align="center"
+          size={resWidth(16)}
+          underline="underline"
+          onPress={() => navigation.navigate('Login')}
         />
       </View>
     </View>

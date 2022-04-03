@@ -15,6 +15,7 @@ const BottomNavigation = ({state, descriptors, navigation}) => {
             ? options.title
             : route.name;
 
+        // Ketika index aktif, berarti isFocused == true
         const isFocused = state.index === index;
 
         const onPress = () => {
@@ -40,9 +41,9 @@ const BottomNavigation = ({state, descriptors, navigation}) => {
         return (
           <TabBar
             key={index}
-            onPress={onPress}
             title={label}
-            active={isFocused}
+            active={isFocused} // isFocused digunakan sbg logic u/ mengetahui state mana yg aktif, ketika state active, maka ditangkap oleh isFocused, kemudian dikirimkan ke props active untuk memunculkan Icon mana yg ditampilkan, dan title mana yang ditampilkan
+            onPress={onPress}
             onLongPress={onLongPress}
           />
         );

@@ -14,14 +14,18 @@ const Login = ({navigation}) => {
       <Gap height={resHeight(40)} />
       <Input label="Email Address" placeholder="input your email" />
       <Gap height={resHeight(16)} />
-      <Input label="Password" placeholder="input password" />
+      <Input
+        label="Password"
+        placeholder="input password"
+        secureTextEntry={true}
+      />
       <Gap height={resHeight(8)} />
       <Link title="Forgot My Password?" align="right" size={resWidth(12)} />
       <Gap height={resHeight(20)} />
       <ButtonNav
         type="primary"
         title="Login"
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.replace('MainApp', {screen: 'Doctors'})}
       />
       <Gap height={resHeight(30)} />
       <Link
@@ -29,6 +33,7 @@ const Login = ({navigation}) => {
         align="center"
         size={resWidth(16)}
         underline="underline"
+        onPress={() => navigation.navigate('Register')}
       />
     </View>
   );
