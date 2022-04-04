@@ -3,10 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  useColorScheme,
   StatusBar,
   ScrollView,
   Platform,
+  useColorScheme,
 } from 'react-native';
 import {Colors, resHeight, resWidth} from '../../utils';
 import {
@@ -16,18 +16,19 @@ import {
   RatedDoctor,
 } from './../../components';
 import {Gap} from '../../components/atoms';
+import {JSONCategoryDoctor} from '../../assets';
 
-const Doctors = () => {
+const Doctors = ({navigation}) => {
   const isDark = useColorScheme() === 'dark';
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <StatusBar
-          barStyle={isDark ? 'light-content' : 'dark-content'}
-          backgroundColor={Colors.white}
+          barStyle={isDark ? 'default' : 'dark-content'}
+          backgroundColor="transparent"
         />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <HomeProfile />
+          <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
           <Gap height={resHeight(24)} />
           <Text style={styles.welcome}>
             Mau konsultasi dengan {'\n'}siapa hari ini?
@@ -39,10 +40,11 @@ const Doctors = () => {
               showsHorizontalScrollIndicator={false}
               style={styles.category}>
               <Gap width={16} />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
+              {JSONCategoryDoctor.data.map(item => {
+                return (
+                  <DoctorCategory category={item.category} key={item.id} />
+                );
+              })}
               <Gap width={6} />
             </ScrollView>
           </View>
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: resWidth(16),
-    paddingTop: Platform.OS === 'android' ? 0 : resHeight(32),
+    paddingTop: Platform.OS === 'android' ? resHeight(20) : resHeight(32),
     backgroundColor: 'white',
     flex: 1,
     borderBottomLeftRadius: 24,
@@ -84,11 +86,11 @@ const styles = StyleSheet.create({
     color: Colors.text.primary,
     letterSpacing: 0.2,
   },
-  category: {
-    maxHeight: resHeight(100),
-  },
   wrapperScroll: {
     marginLeft: resWidth(-16),
+  },
+  category: {
+    maxHeight: resHeight(100),
   },
   sectionLabel: {
     fontSize: resWidth(16),

@@ -1,17 +1,16 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {DummyHospital1} from '../../../assets';
+import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import {Colors, resHeight, resWidth} from '../../../utils';
 
-const ListHospital = () => {
+const ListHospital = ({picture, name, address}) => {
   return (
-    <View style={styles.container}>
-      <Image source={DummyHospital1} style={styles.image} />
+    <TouchableOpacity style={styles.container}>
+      <Image source={picture} style={styles.image} />
       <View style={styles.wrapTitle}>
-        <Text style={styles.name}>Rumah Sakit Citra Bunga Merdeka</Text>
-        <Text style={styles.location}>Jln. Surya Sejahtera 20</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.location}>{address}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -4,11 +4,11 @@ import {Gap} from '../../atoms';
 import {resHeight, resWidth} from '../../../utils';
 import {IconBackDark} from './../../../assets/icon';
 
-const Header = ({onPressBack}) => {
+const Header = ({onPress}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPressBack}>
-        <IconBackDark />
+      <TouchableOpacity onPress={onPress}>
+        <IconBackDark style={styles.image} />
       </TouchableOpacity>
       <Text style={styles.textHeader}>Daftar Akun</Text>
     </View>
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
   },
+  image: {width: 24, height: 24},
   textHeader: {
     color: '#112340',
     fontSize: 20,

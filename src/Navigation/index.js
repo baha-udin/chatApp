@@ -10,6 +10,7 @@ import {
   Doctors,
   Hospitals,
   Messages,
+  UserProfile,
 } from '../Pages';
 import {BottomNavigation} from '../components/molecules';
 
@@ -21,7 +22,7 @@ const MainApp = () => {
     <Tab.Navigator
       tabBar={props => <BottomNavigation {...props} />}
       screenOptions={{headerShown: false}}
-      initialRouteName="Hospitals">
+      initialRouteName="Doctors">
       <Tab.Screen component={Doctors} name="Doctors" headerShown={false} />
       <Tab.Screen component={Messages} name="Messages" />
       <Tab.Screen component={Hospitals} name="Hospitals" />
@@ -39,6 +40,7 @@ const Navigation = () => {
       <Stack.Screen component={GetStarted} name="GetStarted" />
       <Stack.Screen component={Login} name="Login" />
       <Stack.Screen component={Register} name="Register" />
+      <Stack.Screen component={UserProfile} name="UserProfile" />
     </Stack.Navigator>
   );
 };

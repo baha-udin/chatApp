@@ -1,15 +1,26 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-
-import {ILCatUmum} from '../../../assets';
+import {ILCatObat, ILCatPsikiater, ILCatUmum} from '../../../assets';
 import {Colors, resHeight, resWidth} from '../../../utils';
 
-const DoctorCategory = () => {
+const DoctorCategory = ({category, onPress}) => {
+  const Icon = () => {
+    if (category === 'dokter obatmum') {
+      return <ILCatUmum style={styles.illustration} />;
+    }
+    if (category === 'psikiater') {
+      return <ILCatPsikiater style={styles.illustration} />;
+    }
+    if (category === 'dokter obat') {
+      return <ILCatObat style={styles.illustration} />;
+    }
+    return <ILCatUmum style={styles.illustration} />;
+  };
   return (
-    <TouchableOpacity style={styles.container}>
-      <ILCatUmum style={styles.ilustrasion} />
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Icon />
       <Text style={styles.label}>Saya butuh</Text>
-      <Text style={styles.jobs}>dokter umum</Text>
+      <Text style={styles.category}>{category}</Text>
     </TouchableOpacity>
   );
 };
@@ -32,10 +43,12 @@ const styles = StyleSheet.create({
   label: {
     fontSize: resWidth(12),
     fontWeight: '300',
+    color: Colors.text.primary,
   },
-  jobs: {
+  category: {
     fontSize: resWidth(12),
     fontWeight: '500',
     letterSpacing: 0.1,
+    color: Colors.text.primary,
   },
 });

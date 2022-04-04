@@ -6,5 +6,15 @@ import Register from './Register';
 import Doctors from './Doctors';
 import Messages from './Messages';
 import Hospitals from './Hospitals';
+import UserProfile from './UserProfile';
 
-export {Doctors, Messages, Hospitals, Splash, GetStarted, Login, Register};
+export {
+  Doctors,
+  Messages,
+  Hospitals,
+  Splash,
+  GetStarted,
+  Login,
+  Register,
+  UserProfile,
+};

@@ -4,16 +4,14 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {DummyDoctor2} from '../../../assets';
 import {Colors, resWidth} from '../../../utils';
 
-const ListDoctor = () => {
+const ListDoctor = ({profilePicture, name, desc}) => {
   return (
     <TouchableOpacity>
       <View style={styles.container}>
-        <Image source={DummyDoctor2} style={styles.image} />
+        <Image source={profilePicture} style={styles.image} />
         <View style={styles.wrapTitle}>
-          <Text style={styles.title}>Jennie</Text>
-          <Text style={styles.desc}>
-            Baik, terima kasih banyak atas wakt...
-          </Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.desc}>{desc}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -38,7 +36,7 @@ const styles = StyleSheet.create({
     marginLeft: resWidth(12),
     justifyContent: 'center',
   },
-  title: {
+  name: {
     fontSize: resWidth(16),
     fontWeight: '600',
     letterSpacing: 0.3,
