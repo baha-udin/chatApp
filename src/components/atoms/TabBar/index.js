@@ -40,7 +40,7 @@ export default TabBar;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingVertical: resHeight(8),
+    paddingTop: resHeight(8),
     paddingHorizontal: resWidth(30),
   },
   textLabel: active => ({

@@ -16,7 +16,7 @@ export default ButtonNav;
 
 const styles = StyleSheet.create({
   wrapBtn: type => ({
-    paddingVertical: resHeight(12),
+    paddingVertical: resHeight(11),
     justifyContent: 'center',
     backgroundColor: type === 'primary' ? Colors.primary : Colors.white,
     borderRadius: 10,

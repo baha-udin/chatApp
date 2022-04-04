@@ -31,7 +31,7 @@ const MainApp = () => {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      initialRouteName="MainApp"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
       <Stack.Screen component={MainApp} name="MainApp" />
