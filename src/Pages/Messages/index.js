@@ -9,7 +9,9 @@ const Messages = () => {
       <View style={styles.content}>
         <Text style={styles.title}>Messages</Text>
 
-        <ScrollView style={styles.wrapList}>
+        <ScrollView
+          style={styles.wrapList}
+          showsVerticalScrollIndicator={false}>
           <ListDoctor />
           <ListDoctor />
           <ListDoctor />
@@ -38,7 +40,6 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
-    borderColor: Colors.white,
   },
   title: {
     fontSize: resWidth(20),

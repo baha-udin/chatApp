@@ -20,7 +20,8 @@ const MainApp = () => {
   return (
     <Tab.Navigator
       tabBar={props => <BottomNavigation {...props} />}
-      screenOptions={{headerShown: false}}>
+      screenOptions={{headerShown: false}}
+      initialRouteName="Hospitals">
       <Tab.Screen component={Doctors} name="Doctors" headerShown={false} />
       <Tab.Screen component={Messages} name="Messages" />
       <Tab.Screen component={Hospitals} name="Hospitals" />

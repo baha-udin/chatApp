@@ -26,7 +26,7 @@ const Doctors = () => {
           barStyle={isDark ? 'light-content' : 'dark-content'}
           backgroundColor={Colors.white}
         />
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <HomeProfile />
           <Gap height={resHeight(24)} />
           <Text style={styles.welcome}>
@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
-    borderColor: Colors.white,
   },
   welcome: {
     fontSize: resWidth(20),
