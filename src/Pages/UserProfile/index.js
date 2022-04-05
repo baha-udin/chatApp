@@ -10,15 +10,14 @@ import {
   useColorScheme,
   Platform,
 } from 'react-native';
-import {Colors, resWidth} from '../../utils';
+import {Colors, resHeight, resWidth} from '../../utils';
 import {Header} from './../../components/';
 
 const UserProfile = ({navigation}) => {
   const isDark = useColorScheme() === 'dark';
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="white" />
-      <Header onPress={() => navigation.navigate('Doctors')} />
+      <Header onPress={() => navigation.navigate('Doctors')} title="Profile" />
     </View>
   );
 };
@@ -28,8 +27,7 @@ export default UserProfile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
-    paddingTop: Platform.OS === 'android' ? resWidth(0) : resWidth(35),
-    paddingHorizontal: resWidth(16),
+    backgroundColor: 'red',
+    paddingTop: Platform.OS === 'android' ? resHeight(0) : resHeight(35),
   },
 });

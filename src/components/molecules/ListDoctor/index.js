@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 import {DummyDoctor2} from '../../../assets';
-import {Colors, resWidth} from '../../../utils';
+import {Colors, resHeight, resWidth} from '../../../utils';
 
 const ListDoctor = ({profilePicture, name, desc}) => {
   return (
@@ -23,7 +23,8 @@ export default ListDoctor;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    padding: 16,
+    paddingVertical: resHeight(10),
+    paddingHorizontal: resWidth(16),
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },

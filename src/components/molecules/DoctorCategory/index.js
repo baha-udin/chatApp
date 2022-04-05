@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {ILCatObat, ILCatPsikiater, ILCatUmum} from '../../../assets';
 import {Colors, resHeight, resWidth} from '../../../utils';
+import {Gap} from '../../atoms';
 
 const DoctorCategory = ({category, onPress}) => {
   const Icon = () => {
@@ -35,10 +36,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginRight: resWidth(10),
     width: resWidth(104),
-    height: resHeight(130),
+    height: resHeight(140),
   },
-  ilustrasion: {
-    marginBottom: 20,
+  illustration: {
+    marginBottom: resHeight(12),
   },
   label: {
     fontSize: resWidth(12),

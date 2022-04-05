@@ -42,7 +42,11 @@ const Doctors = ({navigation}) => {
               <Gap width={16} />
               {JSONCategoryDoctor.data.map(item => {
                 return (
-                  <DoctorCategory category={item.category} key={item.id} />
+                  <DoctorCategory
+                    category={item.category}
+                    key={item.id}
+                    onPress={() => navigation.navigate('ChooseDoctor')}
+                  />
                 );
               })}
               <Gap width={6} />

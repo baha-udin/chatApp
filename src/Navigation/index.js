@@ -11,6 +11,7 @@ import {
   Hospitals,
   Messages,
   UserProfile,
+  ChooseDoctor,
 } from '../Pages';
 import {BottomNavigation} from '../components/molecules';
 
@@ -41,6 +42,7 @@ const Navigation = () => {
       <Stack.Screen component={Login} name="Login" />
       <Stack.Screen component={Register} name="Register" />
       <Stack.Screen component={UserProfile} name="UserProfile" />
+      <Stack.Screen component={ChooseDoctor} name="ChooseDoctor" />
     </Stack.Navigator>
   );
 };
