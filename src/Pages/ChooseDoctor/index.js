@@ -13,10 +13,31 @@ const ChooseDoctor = ({navigation}) => {
         type="dark"
         onPress={() => navigation.navigate('MainApp', {screen: 'Doctor'})}
       />
-      <ListDoctor profilePicture={DummyDoctor1} name="Jessica" desc="Wanita" />
-      <ListDoctor profilePicture={DummyDoctor1} name="Jessica" desc="Wanita" />
-      <ListDoctor profilePicture={DummyDoctor1} name="Jessica" desc="Wanita" />
-      <ListDoctor profilePicture={DummyDoctor1} name="Jessica" desc="Wanita" />
+      <ListDoctor
+        type="next"
+        profilePicture={DummyDoctor1}
+        name="Jessica"
+        desc="Wanita"
+        onPress={() => navigation.navigate('Chatting')}
+      />
+      <ListDoctor
+        type="next"
+        profilePicture={DummyDoctor1}
+        name="Jessica"
+        desc="Wanita"
+      />
+      <ListDoctor
+        type="next"
+        profilePicture={DummyDoctor1}
+        name="Jessica"
+        desc="Wanita"
+      />
+      <ListDoctor
+        type="next"
+        profilePicture={DummyDoctor1}
+        name="Jessica"
+        desc="Wanita"
+      />
     </View>
   );
 };

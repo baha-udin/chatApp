@@ -1,18 +1,18 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-
-import {DummyDoctor2} from '../../../assets';
+import {DummyDoctor2, IconNext} from '../../../assets';
 import {Colors, resHeight, resWidth} from '../../../utils';
 
-const ListDoctor = ({profilePicture, name, desc}) => {
+const ListDoctor = ({profilePicture, name, desc, type, onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Image source={profilePicture} style={styles.image} />
         <View style={styles.wrapTitle}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.desc}>{desc}</Text>
         </View>
+        {type === 'next' && <IconNext />}
       </View>
     </TouchableOpacity>
   );
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   wrapTitle: {
     marginLeft: resWidth(12),
     justifyContent: 'center',
+    flex: 1,
   },
   name: {
     fontSize: resWidth(16),

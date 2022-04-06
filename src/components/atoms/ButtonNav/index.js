@@ -1,8 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Colors, resHeight, resWidth} from '../../../utils';
+import ButtonIconSend from './ButtonIconSend';
 
-const ButtonNav = ({onPress, title, type}) => {
+const ButtonNav = ({onPress, title, type, disable}) => {
+  if (type === 'btn-icon-send') {
+    return <ButtonIconSend disable={disable} />;
+  }
+
   return (
     <TouchableOpacity style={styles.wrapBtn(type)} onPress={onPress}>
       <View>

@@ -7,6 +7,7 @@ import Messages from './Messages';
 import Hospitals from './Hospitals';
 import UserProfile from './UserProfile';
 import ChooseDoctor from './ChooseDoctor';
+import Chatting from './Chatting';
 
 export {
   Doctors,
@@ -18,4 +19,5 @@ export {
   Register,
   UserProfile,
   ChooseDoctor,
+  Chatting,
 };
