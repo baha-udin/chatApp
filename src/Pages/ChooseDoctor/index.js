@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, Platform, StatusBar} from 'react-native';
-import {Header} from './../../components';
+import {Header, List} from './../../components';
 import {resWidth, resHeight} from '../../utils';
 import {DummyDoctor1} from '../../assets';
-import {ListDoctor} from '../../components/molecules';
 
 const ChooseDoctor = ({navigation}) => {
   return (
@@ -13,26 +12,26 @@ const ChooseDoctor = ({navigation}) => {
         type="dark"
         onPress={() => navigation.navigate('MainApp', {screen: 'Doctor'})}
       />
-      <ListDoctor
+      <List
         type="next"
         profilePicture={DummyDoctor1}
         name="Jessica"
         desc="Wanita"
         onPress={() => navigation.navigate('Chatting')}
       />
-      <ListDoctor
+      <List
         type="next"
         profilePicture={DummyDoctor1}
         name="Jessica"
         desc="Wanita"
       />
-      <ListDoctor
+      <List
         type="next"
         profilePicture={DummyDoctor1}
         name="Jessica"
         desc="Wanita"
       />
-      <ListDoctor
+      <List
         type="next"
         profilePicture={DummyDoctor1}
         name="Jessica"

@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: resHeight(16),
     flexDirection: 'column',
-    alignItems: 'flex-end',
     paddingRight: resWidth(12),
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
   },
   chatContent: {
     padding: 12,

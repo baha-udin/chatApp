@@ -8,6 +8,7 @@ import Hospitals from './Hospitals';
 import UserProfile from './UserProfile';
 import ChooseDoctor from './ChooseDoctor';
 import Chatting from './Chatting';
+import UpdateProfile from './UpdateProfile';
 
 export {
   Doctors,
@@ -20,4 +21,5 @@ export {
   UserProfile,
   ChooseDoctor,
   Chatting,
+  UpdateProfile,
 };

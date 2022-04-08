@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: resHeight(16),
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'flex-end ',
     paddingLeft: resWidth(12),
   },
   chatContent: {

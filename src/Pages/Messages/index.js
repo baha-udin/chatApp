@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, Platform, ScrollView} from 'react-native';
 import {DummyDoctor4, DummyDoctor5, DummyDoctor6} from '../../assets';
-import {Gap, ListDoctor} from '../../components';
+import {Gap, List} from '../../components';
 import {Colors, resHeight, resWidth} from '../../utils';
 
 const Messages = () => {
@@ -35,7 +35,7 @@ const Messages = () => {
           showsVerticalScrollIndicator={false}>
           {Doctors.map(Doctor => {
             return (
-              <ListDoctor
+              <List
                 key={Doctor.id}
                 profilePicture={Doctor.profilePicture}
                 name={Doctor.name}

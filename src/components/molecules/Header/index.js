@@ -38,7 +38,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: type => ({
     flexDirection: 'row',
-    paddingVertical: Platform.OS === 'android' ? resHeight(10) : resHeight(20),
+    paddingVertical: Platform.OS === 'android' ? resHeight(20) : resHeight(20),
     backgroundColor: type === 'dark' ? Colors.secondary : Colors.white,
     alignItems: 'center',
     paddingHorizontal: resWidth(16),
@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
     flex: 1,
     textAlign: 'center',
+    marginLeft: -20,
   }),
 });
