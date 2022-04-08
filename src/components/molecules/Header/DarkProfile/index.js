@@ -5,14 +5,16 @@ import {IconBackDark, IconBackLight, DummyDoctor11} from '../../../../assets';
 
 const DarkProfile = ({onPress, title, type}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
-      <IconBackLight />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onPress}>
+        <IconBackLight />
+      </TouchableOpacity>
       <View style={styles.wrapText}>
         <Text style={styles.name}>Naira Dena</Text>
         <Text style={styles.profesion}>Dokter Anak</Text>
       </View>
       <Image source={DummyDoctor11} style={styles.doctorImage} />
-    </TouchableOpacity>
+    </View>
   );
 };
 

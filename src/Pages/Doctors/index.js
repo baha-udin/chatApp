@@ -16,7 +16,12 @@ import {
   RatedDoctor,
 } from './../../components';
 import {Gap} from '../../components/atoms';
-import {JSONCategoryDoctor} from '../../assets';
+import {
+  DummyDoctor10,
+  DummyDoctor9,
+  DummyDoctor8,
+  JSONCategoryDoctor,
+} from '../../assets';
 
 const Doctors = ({navigation}) => {
   const isDark = useColorScheme() === 'dark';
@@ -28,6 +33,7 @@ const Doctors = ({navigation}) => {
           backgroundColor="transparent"
         />
         <ScrollView showsVerticalScrollIndicator={false}>
+          <Gap height={8} />
           <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
           <Gap height={resHeight(24)} />
           <Text style={styles.welcome}>
@@ -55,9 +61,24 @@ const Doctors = ({navigation}) => {
           <Gap height={28} />
           <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
           <Gap height={16} />
-          <RatedDoctor />
-          <RatedDoctor />
-          <RatedDoctor />
+          <RatedDoctor
+            name="Alexa Rachel"
+            desc="Dentist"
+            avatar={DummyDoctor10}
+            onPress={() => navigation.navigate('DoctorProfile')}
+          />
+          <RatedDoctor
+            name="Sunny Frank"
+            desc="Dentist"
+            avatar={DummyDoctor9}
+            onPress={() => navigation.navigate('DoctorProfile')}
+          />
+          <RatedDoctor
+            name="Poe Min"
+            desc="Dentist"
+            avatar={DummyDoctor8}
+            onPress={() => navigation.navigate('DoctorProfile')}
+          />
           <Gap height={16} />
           <Text style={styles.sectionLabel}>Good News</Text>
           <NewsItem />

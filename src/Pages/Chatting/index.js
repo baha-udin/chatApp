@@ -9,7 +9,7 @@ const Chatting = ({navigation}) => {
       <Header
         type="dark-profile"
         title="Naira Putri Hayza"
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('MainApp', {screen: 'Doctors'})}
       />
       <View style={styles.content}>
         <Text style={styles.chatDate}>Senin, 21 Maret, 2020</Text>

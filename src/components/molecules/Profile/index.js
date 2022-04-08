@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.text.primary,
     letterSpacing: 0.3,
+    textAlign: 'center',
   },
   profession: {
     fontSize: resWidth(15),
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     color: Colors.text.secondary,
     letterSpacing: 0.2,
     marginTop: 2,
+    textAlign: 'center',
   },
   removePhoto: {
     position: 'absolute',
