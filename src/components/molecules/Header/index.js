@@ -12,7 +12,7 @@ import {Colors, resHeight, resWidth} from '../../../utils';
 import {IconBackDark, IconBackLight} from './../../../assets/icon';
 import DarkProfile from './DarkProfile';
 
-const Header = ({onPress, title, type}) => {
+const Header = ({onPress, title, type, desc}) => {
   const Icon = () => {
     if (type === 'normal') {
       return <IconBackDark />;
@@ -23,7 +23,7 @@ const Header = ({onPress, title, type}) => {
     return <IconBackDark />;
   };
   if (type === 'dark-profile') {
-    return <DarkProfile />;
+    return <DarkProfile onPress={onPress} title={title} desc={desc} />;
   }
   return (
     <TouchableOpacity onPress={onPress} style={styles.container(type)}>

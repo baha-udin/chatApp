@@ -6,7 +6,7 @@ import {resWidth, resHeight, Colors} from '../../../../utils';
 const Other = () => {
   return (
     <View style={styles.container}>
-      <Image source={DummyDoctor9} style={styles.profile} />
+      <Image source={DummyDoctor9} style={styles.avatar} />
       <View>
         <View style={styles.chatContent}>
           <Text style={styles.chat}>
@@ -24,9 +24,15 @@ export default Other;
 const styles = StyleSheet.create({
   container: {
     marginBottom: resHeight(16),
-    flexDirection: 'row',
     alignItems: 'flex-end ',
     paddingLeft: resWidth(12),
+    flexDirection: 'row',
+  },
+  avatar: {
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
+    marginRight: 12,
   },
   chatContent: {
     padding: 12,
@@ -45,11 +51,5 @@ const styles = StyleSheet.create({
     color: Colors.text.subTitle,
     fontSize: 11,
     marginTop: 8,
-  },
-  profile: {
-    width: 30,
-    height: 30,
-    borderRadius: 50,
-    marginRight: 12,
   },
 });

@@ -1,8 +1,13 @@
-// export const Fonts = {
-//     nunito700 = 'Nunito-Bold.ttf',
-//     nunito800 = 'Nunito-ExtraBold.ttf',
-//     nunito600 = 'Nunito-SemiBold.ttf',
-//     nunito500 = 'Nunito-Regular.ttf',
-//     nunito300 = 'Nunito-Light.ttf',
-//     nunito200 = 'Nunito-ExtraLight.ttf'
-// }
+export const Fonts = {
+  primary: {
+    100: 'Poppins-Thin',
+    200: 'Poppins-ExtraLight',
+    300: 'Poppins-Light',
+    400: 'Poppins-Regular',
+    500: 'Poppins-Medium',
+    600: 'Poppins-SemiBold',
+    700: 'Poppins-Bold',
+    800: 'Poppins-ExtraBold',
+    900: 'Poppins-Black',
+  },
+};

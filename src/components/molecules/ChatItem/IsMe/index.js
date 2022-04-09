@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {resWidth, resHeight, Colors} from '../../../../utils';
+import {resWidth, resHeight, Colors, Fonts} from '../../../../utils';
 
 const IsMe = () => {
   return (
@@ -19,10 +19,11 @@ export default IsMe;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: resHeight(16),
-    paddingRight: resWidth(12),
+    flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+    marginBottom: 20,
+    paddingRight: 16,
   },
   chatContent: {
     padding: 12,
@@ -34,12 +35,14 @@ const styles = StyleSheet.create({
   },
   chat: {
     fontSize: 14,
+    fontFamily: Fonts.primary[400],
     color: Colors.text.primary,
-    fontWeight: '400',
+    letterSpacing: 0.3,
   },
   date: {
-    color: Colors.text.subTitle,
     fontSize: 11,
-    marginTop: 8,
+    fontFamily: Fonts.primary[500],
+    color: Colors.text.secondary,
+    marginTop: 6,
   },
 });

@@ -9,7 +9,7 @@ const Chatting = ({navigation}) => {
       <Header
         type="dark-profile"
         title="Naira Putri Hayza"
-        onPress={() => navigation.navigate('MainApp', {screen: 'Doctors'})}
+        onPress={() => navigation.navigate('ChooseDoctor')}
       />
       <View style={styles.content}>
         <Text style={styles.chatDate}>Senin, 21 Maret, 2020</Text>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-
   chatDate: {
     fontSize: 11,
     color: Colors.text.subTitle,

@@ -15,6 +15,7 @@ import {
   Chatting,
   UpdateProfile,
   DoctorProfile,
+  UploadPhoto,
 } from '../Pages';
 import {BottomNavigation} from '../components/molecules';
 
@@ -37,13 +38,14 @@ const MainApp = () => {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      initialRouteName="Chatting"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
       <Stack.Screen component={MainApp} name="MainApp" />
       <Stack.Screen component={GetStarted} name="GetStarted" />
       <Stack.Screen component={Login} name="Login" />
       <Stack.Screen component={Register} name="Register" />
+      <Stack.Screen component={UploadPhoto} name="UploadPhoto" />
       <Stack.Screen component={UserProfile} name="UserProfile" />
       <Stack.Screen component={ChooseDoctor} name="ChooseDoctor" />
       <Stack.Screen component={Chatting} name="Chatting" />

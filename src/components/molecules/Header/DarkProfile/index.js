@@ -3,15 +3,15 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {resWidth, resHeight, Colors} from '../../../../utils';
 import {IconBackDark, IconBackLight, DummyDoctor11} from '../../../../assets';
 
-const DarkProfile = ({onPress, title, type}) => {
+const DarkProfile = ({onPress, title, type, desc}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <IconBackLight />
       </TouchableOpacity>
       <View style={styles.wrapText}>
-        <Text style={styles.name}>Naira Dena</Text>
-        <Text style={styles.profesion}>Dokter Anak</Text>
+        <Text style={styles.name}>Naila</Text>
+        <Text style={styles.profesion}>Dokter Umum</Text>
       </View>
       <Image source={DummyDoctor11} style={styles.doctorImage} />
     </View>
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   wrapText: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },

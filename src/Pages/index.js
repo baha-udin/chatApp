@@ -10,6 +10,7 @@ import ChooseDoctor from './ChooseDoctor';
 import Chatting from './Chatting';
 import UpdateProfile from './UpdateProfile';
 import DoctorProfile from './DoctorProfile';
+import UploadPhoto from './UploadPhoto';
 
 export {
   Doctors,
@@ -24,4 +25,5 @@ export {
   Chatting,
   UpdateProfile,
   DoctorProfile,
+  UploadPhoto,
 };
