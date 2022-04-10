@@ -24,9 +24,9 @@ export default Other;
 const styles = StyleSheet.create({
   container: {
     marginBottom: resHeight(16),
-    alignItems: 'flex-end ',
-    paddingLeft: resWidth(12),
     flexDirection: 'row',
+    alignItems: 'flex-end',
+    paddingLeft: resWidth(12),
   },
   avatar: {
     width: 30,

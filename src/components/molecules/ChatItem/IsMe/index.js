@@ -19,7 +19,6 @@ export default IsMe;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     marginBottom: 20,
