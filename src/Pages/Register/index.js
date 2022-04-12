@@ -4,13 +4,10 @@ import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {resHeight, resWidth} from '../../utils';
 import {UseForm} from '../../utils/';
+import {Fire} from './../../Config';
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 
 const Register = ({navigation}) => {
-  // const [fullName, setFullName] = useState('');
-  // const [profession, setProfession] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
   const [form, setForm] = UseForm({
     fullName: '',
     profession: '',
@@ -19,7 +16,13 @@ const Register = ({navigation}) => {
   });
 
   const onContinue = () => {
-    console.warn(form.profession);
+    Fire.createUserWithEmailAndPassword(email, password)
+      .then({})
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
 
   return (
