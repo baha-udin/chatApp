@@ -1,11 +1,18 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, ScrollView, View, Platform} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Alert,
+  ScrollView,
+  View,
+  Platform,
+} from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {resHeight, resWidth} from '../../utils';
 import {UseForm} from '../../utils/';
-import {Fire} from './../../Config';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import App from '../../Config/Fire';
 
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
@@ -16,12 +23,18 @@ const Register = ({navigation}) => {
   });
 
   const onContinue = () => {
-    Fire.createUserWithEmailAndPassword(email, password)
-      .then({})
+    console.log(form);
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, form.email, form.password)
+      .then(success => {
+        console.log('Register success ', success);
+        navigation.replace('MainApp');
+      })
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+
+        console.log('keterangan error ', errorMessage);
       });
   };
 
@@ -29,7 +42,7 @@ const Register = ({navigation}) => {
     <View style={styles.container}>
       <Header
         onPress={() => navigation.navigate('GetStarted')}
-        title="Register"
+        title="Daftar Akun"
       />
       <Gap height={resHeight(16)} />
       <View style={styles.content}>
