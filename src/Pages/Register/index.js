@@ -9,10 +9,11 @@ import {
 } from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
-import {resHeight, resWidth} from '../../utils';
+import {Colors, resHeight, resWidth} from '../../utils';
 import {UseForm} from '../../utils/';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import App from '../../Config/Fire';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
@@ -21,21 +22,42 @@ const Register = ({navigation}) => {
     email: '',
     password: '',
   });
+  const [text, setText] = useState('Register');
 
   const onContinue = () => {
-    console.log(form);
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, form.email, form.password)
-      .then(success => {
-        console.log('Register success ', success);
-        navigation.replace('MainApp');
-      })
-      .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        console.log('keterangan error ', errorMessage);
+    if (
+      form.fullName === '' ||
+      form.profession === '' ||
+      form.email === '' ||
+      form.password === ''
+    ) {
+      showMessage({
+        message: 'Pastikan semua data sudah terisi',
+        type: 'default',
+        Color: 'white',
+        backgroundColor: Colors.error,
       });
+      navigation.navigate('Register');
+    } else {
+      setText('Sedang memproses...');
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, form.email, form.password)
+        .then(success => {
+          console.log('Register success ', success);
+          navigation.replace('MainApp');
+          setForm('');
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          showMessage({
+            message: 'Email sudah terdaftar, silahkan pilih login',
+            type: 'default',
+            Color: 'white',
+            backgroundColor: Colors.error,
+          });
+          setText('Register');
+        });
+    }
   };
 
   return (
@@ -72,7 +94,7 @@ const Register = ({navigation}) => {
             onChangeText={value => setForm('password', value)}
           />
           <Gap height={resHeight(16)} />
-          <ButtonNav type="primary" title="Register" onPress={onContinue} />
+          <ButtonNav type="primary" title={text} onPress={onContinue} />
           <Gap height={resHeight(30)} />
           <Link
             title="Do you have an Account? Login here"
