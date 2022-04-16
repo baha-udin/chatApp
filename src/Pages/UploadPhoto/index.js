@@ -10,9 +10,20 @@ import {
 import {Header, ButtonNav, Gap, Link} from './../../components';
 import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
   const [hasPhoto, setHasPhoto] = useState(false);
+  const [photo, setPhoto] = useState(ILEmptyPhoto);
+
+  const GetImage = () => {
+    launchImageLibrary({}, response => {
+      // Same code as in above section!
+      console.log('responsenya ', response);
+      const source = {uri: response.assets.uri};
+      setPhoto(source);
+    });
+  };
   return (
     <View style={styles.container}>
       <Header
@@ -21,10 +32,9 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
       />
       <View style={styles.content}>
         <View style={styles.top}>
-          <TouchableOpacity style={styles.avatarWrapper}>
-            <Image source={ILEmptyPhoto} style={styles.avatar} />
+          <TouchableOpacity style={styles.avatarWrapper} onPress={GetImage}>
+            <Image source={photo} style={styles.avatar} />
             {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
-
             {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
@@ -42,7 +52,6 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             onPress={() => navigation.replace('MainApp')}
             title="Skip for this"
             align="center"
-            underline
             size={14}
           />
         </View>
