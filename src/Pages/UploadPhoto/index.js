@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,17 +12,20 @@ import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
+  const [hasPhoto, setHasPhoto] = useState(false);
   return (
     <View style={styles.container}>
       <Header
         title="Upload Photo"
-        onPress={() => navigation.navigate('Register')}
+        onPress={() => navigation.replace('Register')}
       />
       <View style={styles.content}>
         <View style={styles.top}>
           <TouchableOpacity style={styles.avatarWrapper}>
             <Image source={ILEmptyPhoto} style={styles.avatar} />
-            <IconAddPhoto style={styles.addPhoto} />
+            {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
+
+            {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
           <Text style={styles.name}>Hilda arwana</Text>
@@ -31,7 +34,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
         <View style={styles.bottom}>
           <ButtonNav
             title="Upload & Continue"
-            type="primary"
+            disable={true}
             onPress={() => navigation.replace('MainApp')}
           />
           <Gap height={resHeight(20)} />
@@ -39,6 +42,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             onPress={() => navigation.replace('MainApp')}
             title="Skip for this"
             align="center"
+            underline
             size={14}
           />
         </View>
