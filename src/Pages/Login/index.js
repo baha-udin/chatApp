@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, useColorScheme, StatusBar} from 'react-native';
 import {ILLogo} from '../../assets/illustration';
 import {Input, Link, Gap, ButtonNav} from './../../components/atoms';
 import {resHeight, resWidth} from '../../utils';
+import {UseForm} from '../../utils';
 
 const Login = ({navigation}) => {
+  const onLogin = () => {
+    console.warn('Fungsi Click jalan');
+  };
+
   return (
     <View style={styles.wrapPage}>
       <StatusBar barStyle="light-content" />
@@ -22,11 +27,7 @@ const Login = ({navigation}) => {
       <Gap height={resHeight(8)} />
       <Link title="Forgot My Password?" align="right" size={resWidth(12)} />
       <Gap height={resHeight(20)} />
-      <ButtonNav
-        type="primary"
-        title="Login"
-        onPress={() => navigation.replace('MainApp', {screen: 'Doctors'})}
-      />
+      <ButtonNav type="primary" title="Login" onPress={onLogin} />
       <Gap height={resHeight(30)} />
       <Link
         title="Create New Account"

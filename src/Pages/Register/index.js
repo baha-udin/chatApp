@@ -12,8 +12,9 @@ import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {Colors, resHeight, resWidth} from '../../utils';
 import {UseForm} from '../../utils/';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
-import App from '../../Config/Fire';
 import {showMessage, hideMessage} from 'react-native-flash-message';
+import Fire from '../../Config/Fire';
+import {getDatabase, ref, set} from 'firebase/database';
 
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
@@ -32,7 +33,7 @@ const Register = ({navigation}) => {
       form.password === ''
     ) {
       showMessage({
-        message: 'Pastikan semua data sudah terisi',
+        message: 'data masih ada yang kosong',
         type: 'default',
         Color: 'white',
         backgroundColor: Colors.error,
@@ -44,13 +45,22 @@ const Register = ({navigation}) => {
       createUserWithEmailAndPassword(auth, form.email, form.password)
         .then(success => {
           console.log('Register success ', success);
+          const data = {
+            fullName: form.fullName,
+            profession: form.profession,
+            email: form.email,
+          };
+          const db = getDatabase();
+          set(ref(db, 'users/' + success.user.uid + '/'), {
+            data,
+          });
+          setForm('reset');
           navigation.replace('MainApp');
-          setForm('');
         })
         .catch(error => {
           const errorMessage = error.message;
           showMessage({
-            message: 'Email sudah terdaftar, silahkan pilih login',
+            message: errorMessage,
             type: 'default',
             Color: 'white',
             backgroundColor: Colors.error,
