@@ -19,6 +19,7 @@ import {getDatabase, ref, set} from 'firebase/database';
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
     fullName: '',
+    callName: '',
     profession: '',
     email: '',
     password: '',
@@ -28,6 +29,7 @@ const Register = ({navigation}) => {
   const onContinue = () => {
     if (
       form.fullName === '' ||
+      form.callName === '' ||
       form.profession === '' ||
       form.email === '' ||
       form.password === ''
@@ -47,6 +49,7 @@ const Register = ({navigation}) => {
           console.log('Register success ', success);
           const data = {
             fullName: form.fullName,
+            callName: form.callName,
             profession: form.profession,
             email: form.email,
           };
@@ -55,7 +58,7 @@ const Register = ({navigation}) => {
             data,
           });
           setForm('reset');
-          navigation.replace('MainApp');
+          navigation.replace('UploadPhoto');
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -86,6 +89,12 @@ const Register = ({navigation}) => {
           />
           <Gap height={resHeight(16)} />
           <Input
+            label="Call Name"
+            value={form.callName}
+            onChangeText={value => setForm('callName', value)}
+          />
+          <Gap height={resHeight(16)} />
+          <Input
             label="Pekerjaan"
             value={form.profession}
             onChangeText={value => setForm('profession', value)}
@@ -95,6 +104,7 @@ const Register = ({navigation}) => {
             label="Email Address"
             value={form.email}
             onChangeText={value => setForm('email', value)}
+            secureTextEntry={false}
           />
           <Gap height={resHeight(16)} />
           <Input
