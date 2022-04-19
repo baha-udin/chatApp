@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,18 +10,30 @@ import {
 import {Header, ButtonNav, Gap, Link} from './../../components';
 import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
-import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {showMessage} from 'react-native-flash-message';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
-  const [hasPhoto, setHasPhoto] = useState(false);
-  const [photo, setPhoto] = useState(ILEmptyPhoto);
+  const [HasPhoto, setHasPhoto] = useState(false);
+  const [Photo, setPhoto] = useState(ILEmptyPhoto);
 
   const GetImage = () => {
     launchImageLibrary({}, response => {
-      // Same code as in above section!
-      console.log('responsenya ', response);
-      const source = {uri: response.assets.uri};
-      setPhoto(source);
+      // lihat response
+      console.log('hasil ', response);
+      if (response.didCancel || response.error) {
+        showMessage({
+          message: 'Foto gagal diupload',
+          type: 'default',
+          backgroundColor: Colors.error,
+          color: Colors.white,
+        });
+      } else {
+        // masukin response uri image, ke state photo
+        const Source = {uri: response.assets.uri};
+        setPhoto(Source);
+        setHasPhoto(true);
+      }
     });
   };
   return (
@@ -33,9 +45,10 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
       <View style={styles.content}>
         <View style={styles.top}>
           <TouchableOpacity style={styles.avatarWrapper} onPress={GetImage}>
-            <Image source={photo} style={styles.avatar} />
-            {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
-            {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
+            <Image source={Photo} />
+            {/* style={styles.avatar} */}
+            {HasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
+            {!HasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
           <Text style={styles.name}>Hilda arwana</Text>
@@ -44,8 +57,8 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
         <View style={styles.bottom}>
           <ButtonNav
             title="Upload & Continue"
-            disable={true}
             onPress={() => navigation.replace('MainApp')}
+            disable={!HasPhoto}
           />
           <Gap height={resHeight(20)} />
           <Link

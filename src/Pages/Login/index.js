@@ -2,12 +2,30 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, useColorScheme, StatusBar} from 'react-native';
 import {ILLogo} from '../../assets/illustration';
 import {Input, Link, Gap, ButtonNav} from './../../components/atoms';
-import {resHeight, resWidth} from '../../utils';
+import {resHeight, resWidth, Colors} from '../../utils';
 import {UseForm} from '../../utils';
+import {showMessage, hideMessage} from 'react-native-flash-message';
 
 const Login = ({navigation}) => {
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+  const [text, setText] = useState('Login');
+
   const onLogin = () => {
-    console.warn('Fungsi Click jalan');
+    if (form.email === '' || form.password === '') {
+      showMessage({
+        message: 'data masih ada yang kosong',
+        type: 'default',
+        Color: 'white',
+        backgroundColor: Colors.error,
+      });
+    } else {
+      setText('Sedang memproses');
+      console.log(form.email, 'masuk');
+      setText('Login');
+    }
   };
 
   return (
@@ -17,9 +35,16 @@ const Login = ({navigation}) => {
       <Gap height={resHeight(40)} />
       <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
       <Gap height={resHeight(40)} />
-      <Input label="Email Address" placeholder="input your email" />
+      <Input
+        value={form.email}
+        onChangeText={value => setForm('email', value)}
+        label="Email Address"
+        placeholder="input your email"
+      />
       <Gap height={resHeight(16)} />
       <Input
+        value={form.password}
+        onChangeText={value => setForm('password', value)}
         label="Password"
         placeholder="input password"
         secureTextEntry={true}
@@ -27,7 +52,7 @@ const Login = ({navigation}) => {
       <Gap height={resHeight(8)} />
       <Link title="Forgot My Password?" align="right" size={resWidth(12)} />
       <Gap height={resHeight(20)} />
-      <ButtonNav type="primary" title="Login" onPress={onLogin} />
+      <ButtonNav type="primary" title={text} onPress={onLogin} />
       <Gap height={resHeight(30)} />
       <Link
         title="Create New Account"
