@@ -24,6 +24,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
       setPhoto(source);
     });
   };
+
   return (
     <View style={styles.container}>
       <Header
@@ -38,8 +39,8 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
-          <Text style={styles.name}>Hilda arwana</Text>
-          <Text style={styles.desc}>Product Engineer</Text>
+          <Text style={styles.name}>{fullName}</Text>
+          <Text style={styles.desc}>{profession}</Text>
         </View>
         <View style={styles.bottom}>
           <ButtonNav
