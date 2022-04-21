@@ -1,8 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {StyleSheet, LogBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './Navigation';
 import FlashMessage from 'react-native-flash-message';
+
+LogBox.ignoreLogs(['Warning: ...']);
+console.disableYellowBox = true;
 
 const App = () => {
   return (

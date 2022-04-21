@@ -14,7 +14,6 @@ import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
   const [hasPhoto, setHasPhoto] = useState(false);
-
   const [photo, setPhoto] = useState(ILEmptyPhoto);
 
   const GetImage = () => {
@@ -40,8 +39,8 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
-          <Text style={styles.name}>Hilda arwana</Text>
-          <Text style={styles.desc}>Product Engineer</Text>
+          <Text style={styles.name}>{fullName}</Text>
+          <Text style={styles.desc}>{profession}</Text>
         </View>
         <View style={styles.bottom}>
           <ButtonNav
@@ -54,7 +53,6 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             onPress={() => navigation.replace('MainApp')}
             title="Skip for this"
             align="center"
-            underline
             size={14}
           />
         </View>

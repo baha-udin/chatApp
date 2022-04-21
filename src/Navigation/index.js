@@ -38,7 +38,7 @@ const MainApp = () => {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="UploadPhoto"
+      initialRouteName="Login"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
       <Stack.Screen component={MainApp} name="MainApp" />
