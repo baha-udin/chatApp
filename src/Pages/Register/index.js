@@ -39,7 +39,6 @@ const Register = ({navigation}) => {
       setText('Sedang memproses...');
       createUserWithEmailAndPassword(authentication, form.email, form.password)
         .then(success => {
-          console.log('Register success ', success);
           const data = {
             fullName: form.fullName,
             callName: form.callName,
@@ -49,13 +48,14 @@ const Register = ({navigation}) => {
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
+          console.log('register success', success);
           setForm('reset');
           navigation.replace('UploadPhoto');
         })
         .catch(error => {
           const errorMessage = error.message;
           showMessage({
-            message: errorMessage,
+            message: 'Email sudah terdaftar, yuk langsung Login',
             type: 'default',
             Color: 'white',
             backgroundColor: Colors.error,

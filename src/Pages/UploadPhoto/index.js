@@ -20,8 +20,9 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
     launchImageLibrary({}, response => {
       // Same code as in above section!
       console.log('responsenya ', response);
-      const source = {uri: response.assets.uri};
+      const source = {uri: response.uri};
       setPhoto(source);
+      setHasPhoto(true);
     });
   };
 
@@ -47,6 +48,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             title="Upload & Continue"
             disable={true}
             onPress={() => navigation.replace('MainApp')}
+            primary
           />
           <Gap height={resHeight(20)} />
           <Link

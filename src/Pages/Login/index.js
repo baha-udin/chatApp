@@ -40,7 +40,7 @@ const Login = ({navigation}) => {
         .catch(error => {
           const errorMessage = error.message;
           showMessage({
-            message: errorMessage,
+            message: 'Email belum terdaftar, daftar dulu ya...',
             type: 'default',
             Color: 'white',
             backgroundColor: Colors.error,
