@@ -17,6 +17,16 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
   const [HasPhoto, setHasPhoto] = useState(false);
   const [Photo, setPhoto] = useState(ILEmptyPhoto);
 
+  const options = {
+    title: 'Select Avatar',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images',
+      cameraRoll: true,
+      waitUntilSaved: true,
+    },
+  };
+
   const GetImage = () => {
     launchImageLibrary({}, response => {
       // lihat response
@@ -36,6 +46,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
       }
     });
   };
+
   return (
     <View style={styles.container}>
       <Header
@@ -51,14 +62,14 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
             {!HasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
           <Gap height={24} />
-          <Text style={styles.name}>Hilda arwana</Text>
-          <Text style={styles.desc}>Product Engineer</Text>
+          <Text style={styles.name}>{fullName}</Text>
+          <Text style={styles.desc}>{profession}</Text>
         </View>
         <View style={styles.bottom}>
           <ButtonNav
             title="Upload & Continue"
+            disable={!hasPhoto}
             onPress={() => navigation.replace('MainApp')}
-            disable={!HasPhoto}
           />
           <Gap height={resHeight(20)} />
           <Link

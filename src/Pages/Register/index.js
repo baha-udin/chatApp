@@ -1,35 +1,27 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  Alert,
-  ScrollView,
-  View,
-  Platform,
-} from 'react-native';
+import {StyleSheet, Text, ScrollView, View, Platform} from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {Colors, resHeight, resWidth} from '../../utils';
 import {UseForm} from '../../utils/';
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {showMessage, hideMessage} from 'react-native-flash-message';
-import Fire from '../../Config/Fire';
-import {getDatabase, ref, set} from 'firebase/database';
+import {authentication, database} from '../../Config/Fire';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {ref, set} from 'firebase/database';
 
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
     fullName: '',
-    callName: '',
     profession: '',
     email: '',
     password: '',
   });
   const [text, setText] = useState('Register');
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const onContinue = () => {
+  const onRegister = () => {
     if (
       form.fullName === '' ||
-      form.callName === '' ||
       form.profession === '' ||
       form.email === '' ||
       form.password === ''
@@ -43,18 +35,15 @@ const Register = ({navigation}) => {
       navigation.navigate('Register');
     } else {
       setText('Sedang memproses...');
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, form.email, form.password)
+      createUserWithEmailAndPassword(authentication, form.email, form.password)
         .then(success => {
           console.log('Register success ', success);
           const data = {
             fullName: form.fullName,
-            callName: form.callName,
             profession: form.profession,
             email: form.email,
           };
-          const db = getDatabase();
-          set(ref(db, 'users/' + success.user.uid + '/'), {
+          set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
           setForm('reset');
@@ -89,12 +78,6 @@ const Register = ({navigation}) => {
           />
           <Gap height={resHeight(16)} />
           <Input
-            label="Call Name"
-            value={form.callName}
-            onChangeText={value => setForm('callName', value)}
-          />
-          <Gap height={resHeight(16)} />
-          <Input
             label="Pekerjaan"
             value={form.profession}
             onChangeText={value => setForm('profession', value)}
@@ -114,7 +97,7 @@ const Register = ({navigation}) => {
             onChangeText={value => setForm('password', value)}
           />
           <Gap height={resHeight(16)} />
-          <ButtonNav type="primary" title={text} onPress={onContinue} />
+          <ButtonNav type="primary" title={text} onPress={onRegister} />
           <Gap height={resHeight(30)} />
           <Link
             title="Do you have an Account? Login here"
