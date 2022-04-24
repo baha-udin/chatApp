@@ -9,7 +9,7 @@ import {authentication} from '../../Config/Fire';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 
 const Login = ({navigation}) => {
-  const [form, setForm] = UseForm({
+  const [form, setForm] = useState({
     email: '',
     password: '',
   });
@@ -65,11 +65,11 @@ const Login = ({navigation}) => {
       />
       <Gap height={resHeight(16)} />
       <Input
+        value={form.password}
+        onChangeText={value => setForm('password', value)}
         label="Password"
         placeholder="input password"
         secureTextEntry={true}
-        value={form.password}
-        onChangeText={value => setForm('password', value)}
       />
       <Gap height={resHeight(8)} />
       <Link title="Forgot My Password?" align="right" size={resWidth(12)} />

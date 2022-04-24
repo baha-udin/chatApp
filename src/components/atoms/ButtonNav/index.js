@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   wrapBtn: type => ({
     paddingVertical: resHeight(11),
     justifyContent: 'center',
-    backgroundColor: type === 'secondary' ? Colors.white : Colors.primary,
+    backgroundColor: type === 'disable' ? Colors.border : Colors.primary,
     borderRadius: 10,
     alignItems: 'center',
     outline: 'none',
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
   },
   title: type => ({
-    color: type === 'secondary' ? Colors.secondary : Colors.white,
+    color: type === 'disable' ? Colors.secondary : Colors.white,
     fontSize: resWidth(16),
     fontWeight: '400',
     letterSpacing: 0.6,
