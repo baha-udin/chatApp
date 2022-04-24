@@ -10,18 +10,28 @@ import {
 import {Header, ButtonNav, Gap, Link} from './../../components';
 import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
-import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILEmptyPhoto);
 
+  const options = {
+    title: 'Select Avatar',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images',
+      cameraRoll: true,
+      waitUntilSaved: true,
+    },
+  };
+
   const GetImage = () => {
     launchImageLibrary({}, response => {
-      // Same code as in above section!
       console.log('responsenya ', response);
       const source = {uri: response.assets.uri};
       setPhoto(source);
+      setHasPhoto(true);
     });
   };
 
@@ -45,7 +55,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
         <View style={styles.bottom}>
           <ButtonNav
             title="Upload & Continue"
-            disable={true}
+            disable={!hasPhoto}
             onPress={() => navigation.replace('MainApp')}
           />
           <Gap height={resHeight(20)} />
