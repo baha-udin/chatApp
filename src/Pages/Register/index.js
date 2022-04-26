@@ -57,7 +57,6 @@ const Register = ({navigation}) => {
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
-          // post data with asyncStorage
           storeData('user', data);
           navigation.navigate('UploadPhoto', data);
           console.log('register success', success);
