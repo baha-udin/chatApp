@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, ScrollView, View, Platform} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  Platform,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
 import {Colors, resHeight, resWidth} from '../../utils';
@@ -73,49 +80,51 @@ const Register = ({navigation}) => {
       />
       <Gap height={resHeight(16)} />
       <View style={styles.content}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Input
-            label="Full Name"
-            value={form.fullName}
-            onChangeText={value => setForm('fullName', value)}
-          />
-          <Gap height={resHeight(16)} />
-          <Input
-            label="Call Name"
-            value={form.callName}
-            onChangeText={value => setForm('callName', value)}
-          />
-          <Gap height={resHeight(16)} />
-          <Input
-            label="Pekerjaan"
-            value={form.profession}
-            onChangeText={value => setForm('profession', value)}
-          />
-          <Gap height={resHeight(16)} />
-          <Input
-            label="Email Address"
-            value={form.email}
-            onChangeText={value => setForm('email', value)}
-            secureTextEntry={false}
-          />
-          <Gap height={resHeight(16)} />
-          <Input
-            label="Password"
-            secureTextEntry={true}
-            value={form.password}
-            onChangeText={value => setForm('password', value)}
-          />
-          <Gap height={resHeight(16)} />
-          <ButtonNav type="primary" title={text} onPress={onRegister} />
-          <Gap height={resHeight(30)} />
-          <Link
-            title="Do you have an Account? Login here"
-            align="center"
-            size={resWidth(16)}
-            underline="underline"
-            onPress={() => navigation.navigate('Login')}
-          />
-        </ScrollView>
+        <KeyboardAvoidingView>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Input
+              label="Full Name"
+              value={form.fullName}
+              onChangeText={value => setForm('fullName', value)}
+            />
+            <Gap height={resHeight(16)} />
+            <Input
+              label="Call Name"
+              value={form.callName}
+              onChangeText={value => setForm('callName', value)}
+            />
+            <Gap height={resHeight(16)} />
+            <Input
+              label="Pekerjaan"
+              value={form.profession}
+              onChangeText={value => setForm('profession', value)}
+            />
+            <Gap height={resHeight(16)} />
+            <Input
+              label="Email Address"
+              value={form.email}
+              onChangeText={value => setForm('email', value)}
+              secureTextEntry={false}
+            />
+            <Gap height={resHeight(16)} />
+            <Input
+              label="Password"
+              secureTextEntry={true}
+              value={form.password}
+              onChangeText={value => setForm('password', value)}
+            />
+            <Gap height={resHeight(16)} />
+            <ButtonNav type="primary" title={text} onPress={onRegister} />
+            <Gap height={resHeight(30)} />
+            <Link
+              title="Do you have an Account? Login here"
+              align="center"
+              size={resWidth(16)}
+              underline="underline"
+              onPress={() => navigation.navigate('Login')}
+            />
+          </ScrollView>
+        </KeyboardAvoidingView>
       </View>
     </View>
   );
@@ -125,7 +134,8 @@ export default Register;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Platform.OS === 'android' ? resHeight(8) : resHeight(25),
+    paddingTop: Platform.OS === 'android' ? resHeight(0) : resHeight(25),
+    paddingBottom: Platform.OS === 'android' ? resHeight(50) : resHeight(0),
     backgroundColor: 'white',
     flex: 1,
   },
