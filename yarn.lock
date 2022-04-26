@@ -1101,10 +1101,6 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature
 "@expo/config-plugins@^4.0.18":
   "integrity" "sha512-lo3tVxRhwM9jfxPHJcURsH5WvU26kX12h5EB3C7kjVhgdQPLkvT8Jk8Cx0KSL8MXKcry2xQvZ2uuwWLkMeplJw=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.1.1.tgz"
@@ -1154,19 +1150,10 @@
   "resolved" "https://registry.npmjs.org/@expo/sdk-runtime-versions/-/sdk-runtime-versions-1.0.0.tgz"
   "version" "1.0.0"
 
-<<<<<<< HEAD
-"@firebase/analytics-compat@0.1.8":
-  "integrity" "sha512-2XBPTFD4DPVZUJZ2tPOib7BfyHB/Ucfq3DfYMNRZFUrgctABTO/lRwjm3oqv4EsoqEOlbxRurvfFN8BQEe28LA=="
-  "resolved" "https://registry.npmjs.org/@firebase/analytics-compat/-/analytics-compat-0.1.8.tgz"
-  "version" "0.1.8"
-=======
-=======
->>>>>>> feature
 "@firebase/analytics-compat@0.1.9":
   "integrity" "sha512-HYKMAZvfU589WVvK5XKY9Pl+axXFISabouAFw2VHpJm/TO1mAXAy0+eIjqQ3j8z3L1OEfCeOV/oY9eh8rpJZ5w=="
   "resolved" "https://registry.npmjs.org/@firebase/analytics-compat/-/analytics-compat-0.1.9.tgz"
   "version" "0.1.9"
->>>>>>> feature
   dependencies:
     "@firebase/analytics" "0.7.8"
     "@firebase/analytics-types" "0.7.0"
@@ -4328,10 +4315,6 @@
     "locate-path" "^5.0.0"
     "path-exists" "^4.0.0"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature
 "find-up@~5.0.0":
   "integrity" "sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng=="
   "resolved" "https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz"
@@ -4340,21 +4323,6 @@
     "locate-path" "^6.0.0"
     "path-exists" "^4.0.0"
 
-<<<<<<< HEAD
-"firebase@^9.6.10":
-  "integrity" "sha512-pnWXhH2J/O5To/TXEp7Dx1nSKkDRspl1bo4f4p6f2noVrn3lvz+cbQNM7DTT0xyA0RsNM/V7aSv3ZbAQj8Od3Q=="
-  "resolved" "https://registry.npmjs.org/firebase/-/firebase-9.6.10.tgz"
-  "version" "9.6.10"
-  dependencies:
-    "@firebase/analytics" "0.7.7"
-    "@firebase/analytics-compat" "0.1.8"
-    "@firebase/app" "0.7.20"
-    "@firebase/app-check" "0.5.5"
-    "@firebase/app-check-compat" "0.2.5"
-    "@firebase/app-compat" "0.1.21"
-=======
-=======
->>>>>>> feature
 "firebase@^9.6.11":
   "integrity" "sha512-Zdmag/wGNkA4IAek+2yQoWrF2vyqIowu+2eOcSaE6jE2hDZYA3nHNutsQ+jquSxE3SeJk3Dh1OEsffqgunBy/w=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-9.6.11.tgz"
@@ -4366,7 +4334,6 @@
     "@firebase/app-check" "0.5.6"
     "@firebase/app-check-compat" "0.2.6"
     "@firebase/app-compat" "0.1.22"
->>>>>>> feature
     "@firebase/app-types" "0.7.0"
     "@firebase/auth" "0.19.12"
     "@firebase/auth-compat" "0.2.12"

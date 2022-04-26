@@ -9,12 +9,13 @@ import {
 } from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
-import {Colors, resHeight, resWidth} from '../../utils';
+import {Colors, resHeight, resWidth, storeData, getData} from '../../utils';
 import {UseForm} from '../../utils/';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 import {authentication, database} from '../../Config/Fire';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {ref, set} from 'firebase/database';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Register = ({navigation}) => {
   const [form, setForm] = UseForm({
@@ -28,6 +29,7 @@ const Register = ({navigation}) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   const onRegister = () => {
+    console.log(form);
     if (
       form.fullName === '' ||
       form.callName === '' ||
@@ -55,9 +57,11 @@ const Register = ({navigation}) => {
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
+          // post data with asyncStorage
+          storeData('user', data);
+          navigation.navigate('UploadPhoto', data);
           console.log('register success', success);
           setForm('reset');
-          navigation.replace('UploadPhoto');
         })
         .catch(error => {
           const errorMessage = error.message;

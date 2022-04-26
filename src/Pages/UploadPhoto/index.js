@@ -13,9 +13,10 @@ import {resHeight, resWidth, Colors} from '../../utils';
 import {showMessage} from 'react-native-flash-message';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
-const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
+const UploadPhoto = ({navigation, route}) => {
   const [HasPhoto, setHasPhoto] = useState(false);
   const [Photo, setPhoto] = useState(ILEmptyPhoto);
+  const {fullName, profession, email} = route.params;
 
   const GetImage = () => {
     const Options = {
