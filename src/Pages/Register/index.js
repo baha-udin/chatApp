@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {Header} from './../../components/molecules';
 import {Input, Gap, ButtonNav, Link} from './../../components/atoms';
-import {Colors, resHeight, resWidth} from '../../utils';
+import {Colors, resHeight, resWidth, storeData} from '../../utils';
 import {UseForm} from '../../utils/';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 import {authentication, database} from '../../Config/Fire';
@@ -55,6 +55,7 @@ const Register = ({navigation}) => {
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
+          storeData('user', data);
           console.log('register success', success);
           setForm('reset');
           navigation.replace('UploadPhoto');
