@@ -5,17 +5,11 @@ import {Input, Link, Gap, ButtonNav} from './../../components/atoms';
 import {resHeight, resWidth, Colors} from '../../utils';
 import {UseForm} from '../../utils';
 import {showMessage, hideMessage} from 'react-native-flash-message';
-<<<<<<< HEAD
-
-const Login = ({navigation}) => {
-  const [form, setForm] = useState({
-=======
 import {authentication} from '../../Config/Fire';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 
 const Login = ({navigation}) => {
-  const [form, setForm] = UseForm({
->>>>>>> feature
+  const [form, setForm] = useState({
     email: '',
     password: '',
   });
@@ -29,12 +23,6 @@ const Login = ({navigation}) => {
         Color: 'white',
         backgroundColor: Colors.error,
       });
-<<<<<<< HEAD
-    } else {
-      setText('Sedang memproses');
-      console.log(form.email, 'masuk');
-      setText('Login');
-=======
       setText(Login);
     } else {
       setText('Sedang memproses...');
@@ -52,14 +40,13 @@ const Login = ({navigation}) => {
         .catch(error => {
           const errorMessage = error.message;
           showMessage({
-            message: errorMessage,
+            message: 'Email belum terdaftar, daftar dulu ya...',
             type: 'default',
             Color: 'white',
             backgroundColor: Colors.error,
           });
           setText('Login');
         });
->>>>>>> feature
     }
   };
 
@@ -71,17 +58,10 @@ const Login = ({navigation}) => {
       <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
       <Gap height={resHeight(40)} />
       <Input
-<<<<<<< HEAD
-        value={form.email}
-        onChangeText={value => setForm('email', value)}
-        label="Email Address"
-        placeholder="input your email"
-=======
         label="Email Address"
         placeholder="input your email"
         value={form.email}
         onChangeText={value => setForm('email', value)}
->>>>>>> feature
       />
       <Gap height={resHeight(16)} />
       <Input
@@ -90,8 +70,6 @@ const Login = ({navigation}) => {
         label="Password"
         placeholder="input password"
         secureTextEntry={true}
-        value={form.password}
-        onChangeText={value => setForm('password', value)}
       />
       <Gap height={resHeight(8)} />
       <Link title="Forgot My Password?" align="right" size={resWidth(12)} />

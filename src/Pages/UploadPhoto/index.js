@@ -10,38 +10,47 @@ import {
 import {Header, ButtonNav, Gap, Link} from './../../components';
 import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {showMessage} from 'react-native-flash-message';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
   const [HasPhoto, setHasPhoto] = useState(false);
   const [Photo, setPhoto] = useState(ILEmptyPhoto);
 
-  const options = {
-    title: 'Select Avatar',
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-      cameraRoll: true,
-      waitUntilSaved: true,
-    },
-  };
-
   const GetImage = () => {
-    launchImageLibrary({}, response => {
-      // lihat response
-      console.log('hasil ', response);
-      if (response.didCancel || response.error) {
+    const Options = {
+      mediaType: 'photo',
+      quality: 0.5,
+      maxWidth: 250,
+      maxHeight: 250,
+    };
+    launchImageLibrary(Options, response => {
+      console.log('hasil', response);
+
+      if (response.didCancel) {
         showMessage({
-          message: 'Foto gagal diupload',
+          message: 'gagal mengambil gambar',
           type: 'default',
+          Color: 'white',
           backgroundColor: Colors.error,
-          color: Colors.white,
         });
+      } else if (response.error) {
+        showMessage({
+          message: 'gagal mengambil gambar',
+          type: 'default',
+          Color: 'white',
+          backgroundColor: Colors.error,
+        });
+        console.log('ImagePicker Error: ', response.error);
       } else {
-        // masukin response uri image, ke state photo
-        const Source = {uri: response.assets.uri};
-        setPhoto(Source);
+        const dataImage = {
+          uri: response.assets[0].uri,
+          type: response.assets[0].type,
+          name: response.assets[0].fileName,
+        };
+        const source = {uri: response.assets[0].uri};
+        setPhoto(source);
+
         setHasPhoto(true);
       }
     });
@@ -56,7 +65,10 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
       <View style={styles.content}>
         <View style={styles.top}>
           <TouchableOpacity style={styles.avatarWrapper} onPress={GetImage}>
-            <Image source={Photo} />
+            <Image
+              source={Photo}
+              style={{width: 100, height: 100, borderRadius: 50}}
+            />
             {/* style={styles.avatar} */}
             {HasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
             {!HasPhoto && <IconAddPhoto style={styles.addPhoto} />}
@@ -68,7 +80,7 @@ const UploadPhoto = ({navigation, onPress, fullName, profession}) => {
         <View style={styles.bottom}>
           <ButtonNav
             title="Upload & Continue"
-            disable={!hasPhoto}
+            disable={!HasPhoto}
             onPress={() => navigation.replace('MainApp')}
           />
           <Gap height={resHeight(20)} />
