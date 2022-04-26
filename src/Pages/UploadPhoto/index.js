@@ -50,8 +50,9 @@ const UploadPhoto = ({navigation, route}) => {
           name: response.assets[0].fileName,
         };
         const source = {uri: response.assets[0].uri};
-        setPhoto(source);
+        const photoForDB = `data:${response.assets[0].type};base64, ${response.assets[0].base64}`;
 
+        setPhoto(source);
         setHasPhoto(true);
       }
     });
@@ -66,10 +67,7 @@ const UploadPhoto = ({navigation, route}) => {
       <View style={styles.content}>
         <View style={styles.top}>
           <TouchableOpacity style={styles.avatarWrapper} onPress={GetImage}>
-            <Image
-              source={Photo}
-              style={{width: 100, height: 100, borderRadius: 50}}
-            />
+            <Image source={Photo} style={styles.imageProfile} />
             {/* style={styles.avatar} */}
             {HasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
             {!HasPhoto && <IconAddPhoto style={styles.addPhoto} />}
@@ -128,10 +126,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  avatar: {
-    width: 110,
-    height: 110,
-    borderRadius: 110 / 2,
+  imageProfile: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    resizeMode: 'contain',
   },
   addPhoto: {
     position: 'absolute',

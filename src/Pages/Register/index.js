@@ -53,6 +53,7 @@ const Register = ({navigation}) => {
             callName: form.callName,
             profession: form.profession,
             email: form.email,
+            uid: success.user.uid,
           };
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
@@ -81,7 +82,7 @@ const Register = ({navigation}) => {
         onPress={() => navigation.navigate('GetStarted')}
         title="Daftar Akun"
       />
-      <Gap height={resHeight(16)} />
+      <Gap height={resHeight(8)} />
       <View style={styles.content}>
         <KeyboardAvoidingView>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -123,7 +124,6 @@ const Register = ({navigation}) => {
               title="Do you have an Account? Login here"
               align="center"
               size={resWidth(16)}
-              underline="underline"
               onPress={() => navigation.navigate('Login')}
             />
           </ScrollView>
