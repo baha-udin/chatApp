@@ -16,7 +16,7 @@ import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 const UploadPhoto = ({navigation, route}) => {
   const [HasPhoto, setHasPhoto] = useState(false);
   const [Photo, setPhoto] = useState(ILEmptyPhoto);
-  const {fullName, profession, email} = route.params;
+  const {fullName, profession, uid, email} = route.params;
 
   const GetImage = () => {
     const Options = {
@@ -51,7 +51,9 @@ const UploadPhoto = ({navigation, route}) => {
         };
         const source = {uri: response.assets[0].uri};
         const photoForDB = `data:${response.assets[0].type};base64, ${response.assets[0].base64}`;
-
+        set(ref(database, 'users/' + success.user.uid + '/'), {
+          data,
+        });
         setPhoto(source);
         setHasPhoto(true);
       }

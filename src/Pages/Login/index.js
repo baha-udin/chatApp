@@ -7,6 +7,7 @@ import {UseForm} from '../../utils';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 import {authentication} from '../../Config/Fire';
 import {signInWithEmailAndPassword} from 'firebase/auth';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useState({
@@ -51,39 +52,42 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <View style={styles.wrapPage}>
-      <StatusBar barStyle="light-content" />
-      <ILLogo />
-      <Gap height={resHeight(40)} />
-      <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
-      <Gap height={resHeight(40)} />
-      <Input
-        label="Email Address"
-        placeholder="input your email"
-        value={form.email}
-        onChangeText={value => setForm('email', value)}
-      />
-      <Gap height={resHeight(16)} />
-      <Input
-        value={form.password}
-        onChangeText={value => setForm('password', value)}
-        label="Password"
-        placeholder="input password"
-        secureTextEntry={true}
-      />
-      <Gap height={resHeight(8)} />
-      <Link title="Forgot My Password?" align="right" size={resWidth(12)} />
-      <Gap height={resHeight(20)} />
-      <ButtonNav type="primary" title={text} onPress={onLogin} />
-      <Gap height={resHeight(30)} />
-      <Link
-        title="Create New Account"
-        align="center"
-        size={resWidth(16)}
-        underline="underline"
-        onPress={() => navigation.navigate('Register')}
-      />
-    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.wrapPage}>
+        <StatusBar barStyle="light-content" />
+        <ILLogo />
+        <Gap height={resHeight(40)} />
+        <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
+        <Gap height={resHeight(40)} />
+
+        <Input
+          label="Email Address"
+          placeholder="input your email"
+          value={form.email}
+          onChangeText={value => setForm('email', value)}
+        />
+        <Gap height={resHeight(16)} />
+        <Input
+          value={form.password}
+          onChangeText={value => setForm('password', value)}
+          label="Password"
+          placeholder="input password"
+          secureTextEntry={true}
+        />
+        <Gap height={resHeight(8)} />
+        <Link title="Forgot My Password?" align="right" size={resWidth(12)} />
+        <Gap height={resHeight(20)} />
+        <ButtonNav type="primary" title={text} onPress={onLogin} />
+        <Gap height={resHeight(30)} />
+        <Link
+          title="Create New Account"
+          align="center"
+          size={resWidth(16)}
+          underline="underline"
+          onPress={() => navigation.navigate('Register')}
+        />
+      </View>
+    </ScrollView>
   );
 };
 

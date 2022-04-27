@@ -83,52 +83,52 @@ const Register = ({navigation}) => {
         title="Daftar Akun"
       />
       <Gap height={resHeight(8)} />
-      <View style={styles.content}>
-        <KeyboardAvoidingView>
-          <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
+          <KeyboardAvoidingView>
             <Input
               label="Full Name"
               value={form.fullName}
               onChangeText={value => setForm('fullName', value)}
             />
-            <Gap height={resHeight(16)} />
+            <Gap height={resHeight(10)} />
             <Input
               label="Call Name"
               value={form.callName}
               onChangeText={value => setForm('callName', value)}
             />
-            <Gap height={resHeight(16)} />
+            <Gap height={resHeight(10)} />
             <Input
               label="Pekerjaan"
               value={form.profession}
               onChangeText={value => setForm('profession', value)}
             />
-            <Gap height={resHeight(16)} />
+            <Gap height={resHeight(10)} />
             <Input
               label="Email Address"
               value={form.email}
               onChangeText={value => setForm('email', value)}
               secureTextEntry={false}
             />
-            <Gap height={resHeight(16)} />
+            <Gap height={resHeight(10)} />
             <Input
               label="Password"
               secureTextEntry={true}
               value={form.password}
               onChangeText={value => setForm('password', value)}
             />
-            <Gap height={resHeight(16)} />
+            <Gap height={resHeight(20)} />
             <ButtonNav type="primary" title={text} onPress={onRegister} />
-            <Gap height={resHeight(30)} />
+            <Gap height={resHeight(20)} />
             <Link
               title="Do you have an Account? Login here"
               align="center"
-              size={resWidth(16)}
+              size={resWidth(14)}
               onPress={() => navigation.navigate('Login')}
             />
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </View>
+          </KeyboardAvoidingView>
+        </View>
+      </ScrollView>
     </View>
   );
 };
