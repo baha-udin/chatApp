@@ -16,6 +16,8 @@
     "@react-navigation/drawer": "^6.3.3",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.2",
+    "cache": "^2.3.1",
+    "clean": "^4.0.2",
     "clean-cache": "^1.0.2",
     "firebase": "^9.6.11",
     "react": "17.0.2",
