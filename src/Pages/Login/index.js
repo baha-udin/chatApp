@@ -41,7 +41,7 @@ const Login = ({navigation}) => {
         .catch(error => {
           const errorMessage = error.message;
           showMessage({
-            message: 'Email belum terdaftar, daftar dulu ya...',
+            message: errorMessage,
             type: 'default',
             Color: 'white',
             backgroundColor: Colors.error,
@@ -52,14 +52,13 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.wrapPage}>
-        <StatusBar barStyle="light-content" />
-        <ILLogo />
-        <Gap height={resHeight(40)} />
-        <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
-        <Gap height={resHeight(40)} />
-
+    <View style={styles.wrapPage}>
+      <StatusBar barStyle="light-content" />
+      <ILLogo />
+      <Gap height={resHeight(40)} />
+      <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
+      <Gap height={resHeight(40)} />
+      <ScrollView>
         <Input
           label="Email Address"
           placeholder="input your email"
@@ -86,8 +85,8 @@ const Login = ({navigation}) => {
           underline="underline"
           onPress={() => navigation.navigate('Register')}
         />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

@@ -12,11 +12,14 @@ import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
 import {resHeight, resWidth, Colors} from '../../utils';
 import {showMessage} from 'react-native-flash-message';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import {ref, child, push, update, set} from 'firebase/database';
+import {database, authentication} from './../../Config/Fire';
 
 const UploadPhoto = ({navigation, route}) => {
   const [HasPhoto, setHasPhoto] = useState(false);
   const [Photo, setPhoto] = useState(ILEmptyPhoto);
   const {fullName, profession, uid, email} = route.params;
+  const [photoForDB, setPhotoForDB] = useState('');
 
   const GetImage = () => {
     const Options = {
@@ -24,6 +27,7 @@ const UploadPhoto = ({navigation, route}) => {
       quality: 0.5,
       maxWidth: 250,
       maxHeight: 250,
+      includeBase64: true,
     };
     launchImageLibrary(Options, response => {
       console.log('hasil', response);
@@ -49,11 +53,18 @@ const UploadPhoto = ({navigation, route}) => {
           type: response.assets[0].type,
           name: response.assets[0].fileName,
         };
-        const source = {uri: response.assets[0].uri};
-        const photoForDB = `data:${response.assets[0].type};base64, ${response.assets[0].base64}`;
-        set(ref(database, 'users/' + success.user.uid + '/'), {
-          data,
+
+        const setPhotoForDB = `data:${response.assets[0].type};base64, ${response.assets[0].base64}`;
+        console.log(setPhotoForDB);
+        // update data to firebase realtime
+        const newPostKey = push(child(ref(database), 'users')).key;
+
+        update(ref(database, 'users' + '/' + uid + '/' + 'data'), {
+          photo: setPhotoForDB,
+          uid: uid,
         });
+
+        const source = {uri: response.assets[0].uri};
         setPhoto(source);
         setHasPhoto(true);
       }
@@ -132,7 +143,6 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    resizeMode: 'contain',
   },
   addPhoto: {
     position: 'absolute',

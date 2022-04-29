@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
-import {getDatabase} from 'firebase/database';
+import {getDatabase, update} from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBcSPiLQILzoMo1Y58HF8NSSPpW4XcCfu0',
@@ -16,3 +16,4 @@ const app = initializeApp(firebaseConfig);
 
 export const authentication = getAuth(app); //getAuth manggil dari app firebaseConfig
 export const database = getDatabase(app);
+export const updates = {app};

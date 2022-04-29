@@ -55,6 +55,7 @@ const Register = ({navigation}) => {
             email: form.email,
             uid: success.user.uid,
           };
+          // push data register to firebase
           set(ref(database, 'users/' + success.user.uid + '/'), {
             data,
           });
