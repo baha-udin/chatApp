@@ -26,10 +26,12 @@ const Header = ({onPress, title, type, desc}) => {
     return <DarkProfile onPress={onPress} title={title} desc={desc} />;
   }
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container(type)}>
-      <Icon />
+    <View style={styles.container(type)}>
+      <TouchableOpacity onPress={onPress}>
+        <Icon />
+      </TouchableOpacity>
       <Text style={styles.textHeader(type)}>{title}</Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 

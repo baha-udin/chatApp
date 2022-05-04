@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     paddingVertical: Platform.OS === 'ios' ? resHeight(30) : resHeight(0),
     flex: 1,
     backgroundColor: 'white',
+    paddingBottom: resHeight(20),
   },
   chatDate: {
     fontSize: 11,

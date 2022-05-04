@@ -27,10 +27,6 @@ const Doctors = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <StatusBar
-          barStyle={isDark ? 'default' : 'dark-content'}
-          backgroundColor="transparent"
-        />
         <ScrollView showsVerticalScrollIndicator={false}>
           <Gap height={8} />
           <HomeProfile onPress={() => navigation.navigate('UserProfile')} />

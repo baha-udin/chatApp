@@ -22,42 +22,42 @@ const Login = ({navigation}) => {
   const [text, setText] = useState('Login');
 
   const onLogin = () => {
-    // if (email === '' || password === '') {
-    //   showMessage({
-    //     message: 'data masih ada yang kosong',
-    //     type: 'default',
-    //     Color: 'white',
-    //     backgroundColor: Colors.error,
-    //   });
-    //   setText(Login);
-    // } else {
-    setText('Sedang memproses...');
-    console.log('email:', email, 'password:', password);
-
-    signInWithEmailAndPassword(authentication, email, password)
-      .then(success => {
-        showMessage({
-          message: 'Login berhasil',
-          type: 'success',
-          Color: 'white',
-          backgroundColor: Colors.primary,
-        });
-        console.log(success);
-        navigation.replace('MainApp');
-        setText(Login);
-      })
-      .catch(error => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        showMessage({
-          message: errorMessage,
-          type: 'default',
-          Color: 'white',
-          backgroundColor: Colors.error,
-        });
-        setText('Login');
+    if (email === '' || password === '') {
+      showMessage({
+        message: 'data masih ada yang kosong',
+        type: 'default',
+        Color: 'white',
+        backgroundColor: Colors.error,
       });
-    // }
+      setText(Login);
+    } else {
+      setText('Sedang memproses...');
+      console.log('email:', email, 'password:', password);
+
+      signInWithEmailAndPassword(authentication, email, password)
+        .then(success => {
+          showMessage({
+            message: 'Login berhasil',
+            type: 'success',
+            Color: 'white',
+            backgroundColor: Colors.primary,
+          });
+          console.log(success);
+          navigation.replace('MainApp');
+          setText(Login);
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          showMessage({
+            message: errorMessage,
+            type: 'default',
+            Color: 'white',
+            backgroundColor: Colors.error,
+          });
+          setText('Login');
+        });
+    }
   };
 
   return (

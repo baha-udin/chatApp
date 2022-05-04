@@ -6,7 +6,11 @@ import {ButtonNav} from '../../atoms';
 const InputChat = () => {
   return (
     <View style={styles.container}>
-      <TextInput placeholder="silahkan kirim pesan" style={styles.textInput} />
+      <TextInput
+        placeholder="silahkan kirim pesan"
+        placeholderTextColor="#000"
+        style={styles.textInput}
+      />
       <ButtonNav title="Send" type="btn-icon-send" disable={false} />
     </View>
   );
