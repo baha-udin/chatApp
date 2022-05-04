@@ -8,6 +8,7 @@ export const storeData = async (key, value) => {
     await AsyncStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
     // saving error
+    console.warn('Error when save data', e);
   }
 };
 
@@ -21,5 +22,6 @@ export const getData = async key => {
     }
   } catch (e) {
     // error reading value
+    console.warn('Error when save data', e);
   }
 };

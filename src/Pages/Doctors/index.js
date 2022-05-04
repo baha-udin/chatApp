@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
   Platform,
   useColorScheme,
 } from 'react-native';
-import {Colors, resHeight, resWidth} from '../../utils';
+import {Colors, getData, resHeight, resWidth} from '../../utils';
 import {
   HomeProfile,
   DoctorCategory,
@@ -24,7 +24,6 @@ import {
 } from '../../assets';
 
 const Doctors = ({navigation}) => {
-  const isDark = useColorScheme() === 'dark';
   return (
     <View style={styles.container}>
       <View style={styles.content}>

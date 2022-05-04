@@ -4,9 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './Navigation';
 import FlashMessage from 'react-native-flash-message';
 
-LogBox.ignoreLogs(['Warning: ...']);
-console.disableYellowBox = true;
-
 const App = () => {
   return (
     <>

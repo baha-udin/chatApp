@@ -9,7 +9,13 @@ import {
 } from 'react-native';
 import {Header, ButtonNav, Gap, Link} from './../../components';
 import {ILEmptyPhoto, IconAddPhoto, IconRemovePhoto} from './../../assets';
-import {resHeight, resWidth, Colors} from '../../utils';
+import {
+  resHeight,
+  resWidth,
+  Colors,
+  localstorage,
+  storeData,
+} from '../../utils';
 import {showMessage} from 'react-native-flash-message';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import {ref, child, push, update, set} from 'firebase/database';
@@ -25,8 +31,8 @@ const UploadPhoto = ({navigation, route}) => {
     const Options = {
       mediaType: 'photo',
       quality: 0.5,
-      maxWidth: 250,
-      maxHeight: 250,
+      maxWidth: 200,
+      maxHeight: 200,
       includeBase64: true,
     };
     launchImageLibrary(Options, response => {
@@ -48,29 +54,27 @@ const UploadPhoto = ({navigation, route}) => {
         });
         console.log('ImagePicker Error: ', response.error);
       } else {
-        const dataImage = {
-          uri: response.assets[0].uri,
-          type: response.assets[0].type,
-          name: response.assets[0].fileName,
-        };
-
-        const setPhotoForDB = `data:${response.assets[0].type};base64, ${response.assets[0].base64}`;
-        console.log(setPhotoForDB);
-        // update data to firebase realtime
-        const newPostKey = push(child(ref(database), 'users')).key;
-
-        update(ref(database, 'users' + '/' + uid + '/' + 'data'), {
-          photo: setPhotoForDB,
-          uid: uid,
-        });
-
         const source = {uri: response.assets[0].uri};
+        setPhotoForDB(
+          `data:${response.assets[0].type};base64, ${response.assets[0].base64}`,
+        );
         setPhoto(source);
         setHasPhoto(true);
       }
     });
   };
 
+  const UploadandContinue = () => {
+    update(ref(database, 'users' + '/' + uid + '/' + 'data'), {
+      photo: Photo,
+      uid: uid,
+    });
+    const data = route.params;
+    data.photo = photoForDB;
+
+    storeData('users', data);
+    navigation.navigate('MainApp');
+  };
   return (
     <View style={styles.container}>
       <Header
@@ -93,7 +97,7 @@ const UploadPhoto = ({navigation, route}) => {
           <ButtonNav
             title="Upload & Continue"
             disable={!HasPhoto}
-            onPress={() => navigation.replace('MainApp')}
+            onPress={UploadandContinue}
           />
           <Gap height={resHeight(20)} />
           <Link

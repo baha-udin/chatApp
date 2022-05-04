@@ -1,59 +1,67 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, useColorScheme, StatusBar} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  useColorScheme,
+  StatusBar,
+  ScrollView,
+} from 'react-native';
 import {ILLogo} from '../../assets/illustration';
 import {Input, Link, Gap, ButtonNav} from './../../components/atoms';
 import {resHeight, resWidth, Colors} from '../../utils';
-import {UseForm} from '../../utils';
 import {showMessage, hideMessage} from 'react-native-flash-message';
 import {authentication} from '../../Config/Fire';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import {ScrollView} from 'react-native-gesture-handler';
+
+import {UseForm} from '../../utils';
 
 const Login = ({navigation}) => {
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [text, setText] = useState('Login');
 
   const onLogin = () => {
-    if (form.email === '' || form.password === '') {
-      showMessage({
-        message: 'data masih ada yang kosong',
-        type: 'default',
-        Color: 'white',
-        backgroundColor: Colors.error,
-      });
-      setText(Login);
-    } else {
-      setText('Sedang memproses...');
-      signInWithEmailAndPassword(authentication, form.email, form.password)
-        .then(succes => {
-          showMessage({
-            message: 'Login berhasil',
-            type: 'success',
-            Color: 'white',
-            backgroundColor: Colors.primary,
-          });
-          navigation.replace('MainApp');
-          setText(Login);
-        })
-        .catch(error => {
-          const errorMessage = error.message;
-          showMessage({
-            message: errorMessage,
-            type: 'default',
-            Color: 'white',
-            backgroundColor: Colors.error,
-          });
-          setText('Login');
+    // if (email === '' || password === '') {
+    //   showMessage({
+    //     message: 'data masih ada yang kosong',
+    //     type: 'default',
+    //     Color: 'white',
+    //     backgroundColor: Colors.error,
+    //   });
+    //   setText(Login);
+    // } else {
+    setText('Sedang memproses...');
+    console.log('email:', email, 'password:', password);
+
+    signInWithEmailAndPassword(authentication, email, password)
+      .then(success => {
+        showMessage({
+          message: 'Login berhasil',
+          type: 'success',
+          Color: 'white',
+          backgroundColor: Colors.primary,
         });
-    }
+        console.log(success);
+        navigation.replace('MainApp');
+        setText(Login);
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        showMessage({
+          message: errorMessage,
+          type: 'default',
+          Color: 'white',
+          backgroundColor: Colors.error,
+        });
+        setText('Login');
+      });
+    // }
   };
 
   return (
     <View style={styles.wrapPage}>
-      <StatusBar barStyle="light-content" />
       <ILLogo />
       <Gap height={resHeight(40)} />
       <Text style={styles.title}>Masuk dan mulai {'\n'}berkonsultasi</Text>
@@ -62,13 +70,13 @@ const Login = ({navigation}) => {
         <Input
           label="Email Address"
           placeholder="input your email"
-          value={form.email}
-          onChangeText={value => setForm('email', value)}
+          onChangeText={value => setEmail(value)}
+          value={email}
         />
         <Gap height={resHeight(16)} />
         <Input
-          value={form.password}
-          onChangeText={value => setForm('password', value)}
+          value={password}
+          onChangeText={value => setPassword(value)}
           label="Password"
           placeholder="input password"
           secureTextEntry={true}
